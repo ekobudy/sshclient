@@ -109,7 +109,7 @@ func TermInOut(w io.Writer, r io.Reader) (chan<- string, <-chan string) {
 				return
 			}
 			t += n
-			if buf[t-2] == '$' || (buf[t-3] == '~' && buf[t-2] == '>') {
+			if buf[t-2] == '$' || buf[t-2] == '>' {
 				out <- string(buf[:t])
 				t = 0
 				wg.Done()
